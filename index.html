@@ -24,25 +24,35 @@
             <input
               type="text"
               class="padding-10px box-cursor borderradius-right-none outline-none"
+              id="task-input"
             />
             <button
               class="padding-10px box-small-cursor borderradius-left-none"
+              id="task-add"
             >
               할일
             </button>
           </div>
           <div class="member-container fontsize-rem">
-            <a href=""></a><div class="padding-10px box-cursor">Sign in</div></a>
-            <a href=""></a><div class="padding-10px box-cursor">Sign up</div></a>
+            <a href=""><div class="padding-10px box-cursor">Sign in</div></a>
+            <a href=""><div class="padding-10px box-cursor">Sign up</div></a>
           </div>
         </header>
         <main class="todo-main">
           <section class="todo-state">
-            <div class="">All</div>
-            <div class="">Ongoing</div>
-            <div class="">Done</div>
+            <div class="box-big-cursor borderradius-bottom-none">All</div>
+            <div class="box-big-cursor borderradius-bottom-none">Ongoing</div>
+            <div class="box-big-cursor borderradius-bottom-none">Done</div>
           </section>
-          <section class="task"></section>
+          <section class="task-dashboard" id="taskDashBoard">
+            <div class="task">
+              <div class="task-name">집안일</div>
+              <div class="state-container">
+                <button class="task-toggle box-small-cursor">✔</button>
+                <button class="task-delete box-small-cursor">X</button>
+              </div>
+            </div>
+          </section>
         </main>
       </div>
     </div>

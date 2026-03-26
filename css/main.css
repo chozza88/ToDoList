@@ -99,13 +99,15 @@ a {
 .borderradius-left-none {
   border-radius: 0px 20px 20px 0px;
 }
+.borderradius-bottom-none {
+  border-radius: 20px 20px 0px 0px;
+}
 .outline-none {
   outline: none;
 }
 
 .todo-main {
   padding: 30px;
-  border: 1px solid black;
 }
 .todo-state {
   display: flex;
@@ -113,9 +115,20 @@ a {
 }
 .box-big-cursor {
   border: 1px solid rgb(243, 217, 217);
-  border-bottom: 0;
   width: 100px;
-  border-radius: 20px;
   transition: all 0.5s ease;
   text-align: center;
+  padding: 10px;
+}
+.box-big-cursor:hover {
+  background-color: #f7f3d4;
+  cursor: pointer;
+  color: #6299e6;
+}
+.task {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid rgb(243, 217, 217);
+  border-top: 0;
+  padding: 10px;
 }
