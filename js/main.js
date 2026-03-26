@@ -3,6 +3,7 @@ const $taskInput = document.querySelector("#task-input");
 const $taskAdd = document.querySelector("#task-add");
 const taskList = [];
 
+<<<<<<< HEAD
 // js 랜덤 아이디 만들기(코드 가져옴)
 var newID = function () {
   return Math.random().toString(36).substr(2, 16);
@@ -22,10 +23,17 @@ function addTask() {
     taskValue: $taskInput.value,
     isComplete: false,
   };
+=======
+$taskAdd.addEventListener("click", addTask);
+
+function addTask() {
+  let task = $taskInput.value;
+>>>>>>> 34488c263a494034c3570e58bf8a5aee2a415186
   taskList.push(task);
   console.log(taskList);
   taskRender();
 }
+<<<<<<< HEAD
 // 할일 랜더 함수
 function taskRender() {
   let taskResult = "";
@@ -35,11 +43,23 @@ function taskRender() {
               <div class="task-name ${taskList[i].isComplete ? "complete" : ""}">${taskList[i].taskValue}</div>
               <div class="state-container">
                 <button class="task-toggle box-small-cursor " onClick="toggleTask('${taskList[i].id}')">✔</button>
+=======
+
+function taskRender() {
+  let taskResult = "";
+  for (let i = 0; i < taskList.length; i++) {
+    taskResult = `
+        <div class="task">
+              <div class="task-name">${taskList[i]}</div>
+              <div class="state-container">
+                <button class="task-toggle box-small-cursor">✔</button>
+>>>>>>> 34488c263a494034c3570e58bf8a5aee2a415186
                 <button class="task-delete box-small-cursor">X</button>
               </div>
             </div>`;
   }
 
+<<<<<<< HEAD
   document.querySelector("#taskDashBoard").innerHTML = taskResult;
 }
 // 할일 토글 변경 함수
@@ -50,4 +70,7 @@ function toggleTask(id) {
     }
   }
   taskRender();
+=======
+  document.querySelector("#taskDashBoard").innerHTML += taskResult;
+>>>>>>> 34488c263a494034c3570e58bf8a5aee2a415186
 }

@@ -129,8 +129,14 @@ a {
   display: flex;
   justify-content: space-between;
   border: 1px solid rgb(243, 217, 217);
+<<<<<<< HEAD
   padding: 10px;
 }
 .complete {
   text-decoration: line-through;
 }
+=======
+  border-top: 0;
+  padding: 10px;
+}
+>>>>>>> 34488c263a494034c3570e58bf8a5aee2a415186
