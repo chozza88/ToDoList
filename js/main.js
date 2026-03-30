@@ -35,7 +35,7 @@ function taskRender() {
               <div class="task-name ${taskList[i].isComplete ? "complete" : ""}">${taskList[i].taskValue}</div>
               <div class="state-container">
                 <button class="task-toggle box-small-cursor " onClick="toggleTask('${taskList[i].id}')">✔</button>
-                <button class="task-delete box-small-cursor">X</button>
+                <button class="task-delete box-small-cursor" onClick="deleteTask('${taskList[i].id}')">X</button>
               </div>
             </div>`;
   }
@@ -47,6 +47,15 @@ function toggleTask(id) {
   for (let i = 0; i < taskList.length; i++) {
     if (taskList[i].id === id) {
       taskList[i].isComplete = !taskList[i].isComplete;
+    }
+  }
+  taskRender();
+}
+// 할일 토글 삭제 함수
+function deleteTask(id) {
+  for (let i = 0; i < taskList.length; i++) {
+    if (taskList[i].id === id) {
+      taskList.splice(i, 1);
     }
   }
   taskRender();
