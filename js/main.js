@@ -1,8 +1,29 @@
 // 할일을 등록하면 동적으로 생성됨
 const $taskInput = document.querySelector("#task-input");
 const $taskAdd = document.querySelector("#task-add");
+const $todoState = document.querySelectorAll(".todo-state div");
+let filter = "all";
 const taskList = [];
 
+// filter 이벤트(클릭)
+for (let i = 0; i < $todoState.length; i++) {
+  $todoState[i].addEventListener("click", function (e) {
+    taskState(e);
+  });
+}
+// 필터 정리 함수
+function taskState(e) {
+  if (e.target.id === "all") {
+    filter = "all";
+    taskRender();
+  } else if (e.target.id === "ongoing") {
+    filter = "ongoing";
+    taskRender();
+  } else if (e.target.id === "done") {
+    filter = "done";
+    taskRender();
+  }
+}
 // js 랜덤 아이디 만들기(코드 가져옴)
 var newID = function () {
   return Math.random().toString(36).substr(2, 16);
@@ -28,14 +49,31 @@ function addTask() {
 }
 // 할일 랜더 함수
 function taskRender() {
+  let list = [];
+
+  if (filter === "all") {
+    list = taskList;
+  } else if (filter === "ongoing") {
+    for (let i = 0; i < taskList.length; i++) {
+      if (taskList[i].isComplete === false) {
+        list.push(taskList[i]);
+      }
+    }
+  } else if (filter === "done") {
+    for (let i = 0; i < taskList.length; i++) {
+      if (taskList[i].isComplete === true) {
+        list.push(taskList[i]);
+      }
+    }
+  }
   let taskResult = "";
-  for (let i = 0; i < taskList.length; i++) {
+  for (let i = 0; i < list.length; i++) {
     taskResult += `
         <div class="task">
-              <div class="task-name ${taskList[i].isComplete ? "complete" : ""}">${taskList[i].taskValue}</div>
+              <div class="task-name ${list[i].isComplete ? "complete" : ""}">${list[i].taskValue}</div>
               <div class="state-container">
-                <button class="task-toggle box-small-cursor " onClick="toggleTask('${taskList[i].id}')">✔</button>
-                <button class="task-delete box-small-cursor" onClick="deleteTask('${taskList[i].id}')">X</button>
+                <button class="task-toggle box-small-cursor " onClick="toggleTask('${list[i].id}')">✔</button>
+                <button class="task-delete box-small-cursor" onClick="deleteTask('${list[i].id}')">X</button>
               </div>
             </div>`;
   }

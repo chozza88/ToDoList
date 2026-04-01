@@ -39,7 +39,7 @@ a {
 
 .container {
   background-color: #fcf2f2;
-  width: 50%;
+  min-width: 50%;
   height: 100vh;
   z-index: 3;
   /* shodaw gerate 사용 */
@@ -102,6 +102,7 @@ a {
 .borderradius-bottom-none {
   border-radius: 20px 20px 0px 0px;
 }
+
 .outline-none {
   outline: none;
 }
@@ -133,4 +134,30 @@ a {
 }
 .complete {
   text-decoration: line-through;
+}
+
+@media (max-width: 650px) {
+  .todo-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .member-container {
+    order: 1;
+  }
+  .input-container {
+    order: 2;
+  }
+  .font-small {
+    font-size: 0.8rem;
+  }
+  .task {
+    flex-direction: column;
+    align-items: center;
+  }
+  .state-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
