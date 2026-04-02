@@ -2,9 +2,15 @@
 const $taskInput = document.querySelector("#task-input");
 const $taskAdd = document.querySelector("#task-add");
 const $todoState = document.querySelectorAll(".todo-state div");
+const $wrnMsgContainer = document.querySelector("#wrnMsgContainer");
+const $wrnBtnClose = document.querySelector("#wrnBtnClose");
+
 let filter = "all";
 const taskList = [];
-
+// 할일 모달창 닫기 이벤트
+$wrnBtnClose.addEventListener("click", function () {
+  $wrnMsgContainer.style.display = "none";
+});
 // filter 이벤트(클릭)
 for (let i = 0; i < $todoState.length; i++) {
   $todoState[i].addEventListener("click", function (e) {
@@ -33,10 +39,22 @@ $taskInput.addEventListener("focus", nullValue);
 function nullValue() {
   $taskInput.value = "";
 }
+// keydown(Enter) 이벤트 시 할 일 추가
+$taskInput.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    addTask();
+  }
+});
+// 클릭 이벤트 시 할 일 추가
 $taskAdd.addEventListener("click", addTask);
 
 // 할일 추가 로직
 function addTask() {
+  // 빈 일정 추가시 블로킹
+  if (!$taskInput.value.trim()) {
+    $wrnMsgContainer.style.display = "flex";
+    return;
+  }
   //task 객체로 관리(아이디의 상태에 따라서 로직 결정)
   let task = {
     id: newID(),
@@ -45,6 +63,8 @@ function addTask() {
   };
   taskList.push(task);
   console.log(taskList);
+  // $taskInput 값 이벤트 추가 후 빈값 만들기
+  $taskInput.value = "";
   taskRender();
 }
 // 할일 랜더 함수
